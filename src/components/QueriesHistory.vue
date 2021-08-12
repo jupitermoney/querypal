@@ -22,10 +22,12 @@ export default {
   name: "QueriesHistory",
   async created() {
     eventBus.$on('refreshCredentials', async (credentials) => {
+      console.log(credentials)
       // this.client = new AthenaClient({credentials: credentials, region: 'eu-west-1'})
       this.client = new AthenaClient({region: 'eu-west-1'})
     })
     const credentials = await Auth.currentCredentials()
+    console.log(credentials)
     // this.client = new AthenaClient({credentials, region: 'eu-west-1'})
     this.client = new AthenaClient({region: 'eu-west-1'})
     this.currentUser = await Auth.currentUserInfo()

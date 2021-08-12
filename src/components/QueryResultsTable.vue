@@ -28,7 +28,9 @@ export default {
   props: ['athenaQueryId',],
   async mounted() {
     const credentials = await Auth.currentCredentials()
-    this.client = new AthenaClient({credentials, region: 'eu-west-1'})
+    console.log(credentials)
+    // this.client = new AthenaClient({credentials, region: 'eu-west-1'})
+    this.client = new AthenaClient({region: 'eu-west-1'})
     this.s3QueryOutputPath = `s3://${awsconfig.aws_user_files_s3_bucket}/private/`
     await this.getQueryResults()
     this.demo = JSON.parse(JSON.stringify(this.columns))

@@ -58,7 +58,9 @@ export default {
   methods: {
     eventBusListener(){
       eventBus.$on('refreshCredentials', async (credentials) => {
-        this.client = new AthenaClient({credentials: credentials, region: awsconfig.aws_project_region})
+        console.log(credentials)
+        // this.client = new AthenaClient({credentials: credentials, region: awsconfig.aws_project_region})
+        this.client = new AthenaClient({region: awsconfig.aws_project_region})
         await this.listAthenaDatabases();
       })
     },

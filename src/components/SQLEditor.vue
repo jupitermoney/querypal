@@ -98,10 +98,12 @@ export default {
   name: "SQLEditor",
   async created() {
     eventBus.$on('refreshCredentials', async (credentials) => {
-      this.client = new AthenaClient({credentials: credentials, region: awsconfig.aws_project_region})
+      // this.client = new AthenaClient({credentials: credentials, region: awsconfig.aws_project_region})
+      this.client = new AthenaClient({region: awsconfig.aws_project_region})
     })
     const credentials = await Auth.currentCredentials()
-    this.client = new AthenaClient({credentials, region: awsconfig.aws_project_region})
+    // this.client = new AthenaClient({credentials, region: awsconfig.aws_project_region})
+    this.client = new AthenaClient({region: awsconfig.aws_project_region})
     this.s3QueryOutputPath = `s3://${awsconfig.aws_user_files_s3_bucket}/private/`
   },
   components: {

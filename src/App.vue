@@ -41,7 +41,8 @@ export default {
       this.user = authData;
       if (authState === AuthState.SignedIn) {
         Auth.currentCredentials().then(res => {
-          console.log("creds: " + res)
+          console.log("creds: ", res)
+          console.log(res)
           eventBus.$emit('refreshCredentials', res)
         })
       }

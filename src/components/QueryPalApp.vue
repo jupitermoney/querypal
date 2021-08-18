@@ -2,11 +2,6 @@
   <b-row style="margin-top: 10px">
     <DatabaseSearch/>
     <SQLEditorTabs/>
-    <b-col md="3">
-      <QuerypalTimeline/>
-      <hr>
-      <QueriesHistory/>
-    </b-col>
     <v-tour name="myTour" :steps="steps"></v-tour>
   </b-row>
 </template>
@@ -14,11 +9,9 @@
 <script>
 import SQLEditorTabs from '@/components/SQLEditorTabs'
 import DatabaseSearch from '@/components/DatabaseSearch'
-import QueriesHistory from '@/components/QueriesHistory'
-import QuerypalTimeline from '@/components/QuerypalTimeline'
 export default {
   name: "QueryPalApp",
-  components: {SQLEditorTabs, DatabaseSearch, QueriesHistory, QuerypalTimeline},
+  components: {SQLEditorTabs, DatabaseSearch},
   mounted() {
     this.$tours['myTour'].start()
   },
@@ -54,26 +47,6 @@ export default {
           params: {
             placement: 'bottom'
           }
-        },
-        {
-          target: '.scroll-code',
-          content: 'Scroll to see your last 10 queries should you forget anything.',
-          params: {
-            placement: 'left'
-          },
-          header: {
-            title: 'Your query history',
-          },
-        },
-        {
-          target: '.querypal-timeline',
-          content: 'Scroll through the global timeline to see shared queries from colleagues and team members.',
-          params: {
-            placement: 'left'
-          },
-          header: {
-            title: 'Querypal Global Timeline',
-          },
         }
       ]
     }

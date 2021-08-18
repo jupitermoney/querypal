@@ -17,15 +17,16 @@ import { Analytics } from '@aws-amplify/analytics';
 import eventBus from "@/event";
 import {AthenaClient} from "@aws-sdk/client-athena";
 import {Auth} from "@aws-amplify/auth";
+import awsconfig from "@/aws-exports";
 import queryDao from "@/data/queryDAO";
 export default {
   name: "QueriesHistory",
   async created() {
     eventBus.$on('refreshCredentials', async (credentials) => {
-      this.client = new AthenaClient({credentials: credentials, region: 'eu-west-1'})
+      this.client = new AthenaClient({credentials: credentials, region: awsconfig.aws_project_region})
     })
     const credentials = await Auth.currentCredentials()
-    this.client = new AthenaClient({credentials, region: 'eu-west-1'})
+    this.client = new AthenaClient({credentials, region: awsconfig.aws_project_region})
     this.currentUser = await Auth.currentUserInfo()
     let self = this
     queryDao.sessionQuerySubscription(this.currentUser.username).subscribe( {

@@ -1,23 +1,6 @@
 <template>
   <div id="app">
-    <amplify-authenticator>
-      <amplify-sign-in
-        header-text="JDP Querypal, Web UI for Amazon Athena"
-        slot="sign-in"
-        :style="{display: 'flex',justifyContent: 'center', marginTop: '15em'}"
-      >
-      </amplify-sign-in>
-      <amplify-sign-up
-        header-text="Sign Up for Querypal demo"
-        slot="sign-up"
-        :style="{display: 'flex',justifyContent: 'center', marginTop: '15em'}"
-      ></amplify-sign-up>
-      <Header />
-      <b-container fluid>
-        <QueryPalApp/>
-      </b-container>
-<!--      <amplify-sign-out></amplify-sign-out>-->
-    </amplify-authenticator>
+    <button @click="signingIn">Click Here</button>
   </div>
 </template>
 
@@ -56,6 +39,12 @@ export default {
   },
   beforeDestroy() {
     return onAuthUIStateChange;
+  },
+  methods: {
+    signingIn() {
+      Auth.signIn(harjindersingh.mistry@jupiter.money,Welcome@123)
+      .then(user=>console.log(user))
+      .catch(err=>console.log(err))
   }
 }
 </script>

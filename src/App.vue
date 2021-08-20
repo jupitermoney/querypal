@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <button @click="signingIn">Click Here</button>
     <Header />
       <b-container fluid>
         <QueryPalApp/>
@@ -14,7 +13,6 @@ import QueryPalApp from '@/components/QueryPalApp'
 import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
-
 export default {
   name: 'App',
   components: {
@@ -22,6 +20,10 @@ export default {
     QueryPalApp,
   },
   created() {
+    Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
+      .then(user=>console.log(user))
+      .catch(err=>console.log(err))
+
     onAuthUIStateChange((authState, authData) => {
       this.authState = authState;
       this.user = authData;
@@ -42,13 +44,6 @@ export default {
   },
   beforeDestroy() {
     return onAuthUIStateChange;
-  },
-  methods: {
-    signingIn() {
-      Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
-      .then(user=>console.log(user))
-      .catch(err=>console.log(err))
-      }
   }
 }
 </script>

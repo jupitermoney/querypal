@@ -24,6 +24,10 @@ export default {
       .then(user=>console.log(user))
       .catch(err=>console.log(err))
 
+    Auth.currentCredentials().then(res => {
+          eventBus.$emit('refreshCredentials', res)
+        })
+
     onAuthUIStateChange((authState, authData) => {
       this.authState = authState;
       this.user = authData;

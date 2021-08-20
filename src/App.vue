@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <button @click="signingIn">Click Here</button>
+    <Header />
+      <b-container fluid>
+        <QueryPalApp/>
+      </b-container>
   </div>
 </template>
 

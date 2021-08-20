@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     signingIn() {
-      Auth.signIn(harjindersingh.mistry@jupiter.money,Welcome@123)
+      Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(user=>console.log(user))
       .catch(err=>console.log(err))
   }

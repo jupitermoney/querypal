@@ -1,5 +1,5 @@
 <template>
-  <b-col md="7">
+  <b-col md="10">
     <b-card no-body>
       <b-tabs card>
         <b-tab v-for="i in sqlEditorTabs" :key="'dyn-tab-' + i">

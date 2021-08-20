@@ -11,7 +11,6 @@ import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
 
-
 export default {
   name: 'App',
   components: {
@@ -45,6 +44,7 @@ export default {
       Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(user=>console.log(user))
       .catch(err=>console.log(err))
+      }
   }
 }
 </script>

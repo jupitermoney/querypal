@@ -24,6 +24,17 @@ export default {
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;
+       console.log("=====");
+       console.log(AuthState.SignedIn);
+       console.log("=====");
+       console.log(Auth);
+       console.log("=====");
+       console.log(Auth.currentCredentials());
+       Auth.currentCredentials().then(res => {
+          console.log("creds: ", res)
+          console.log(res)
+          eventBus.$emit('refreshCredentials', res)
+        })
       })
       .catch(err=>console.log(err))
 

@@ -21,9 +21,9 @@ export default {
   },
   created() {
     Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
-      .then(user=>{
-        authState=AuthState.SignedIn;
-        authData=user;
+      .then(data=>{
+       this.authState=AuthState.SignedIn;
+       this.user=data;
       })
       .catch(err=>console.log(err))
 

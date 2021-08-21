@@ -23,6 +23,10 @@ export default {
     Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(user=>console.log(user))
       .catch(err=>console.log(err))
+      console.log(AuthState)
+      console.log("+++++++++++++++++++++");
+      console.log("AuthState.SignedIn);
+      console.log(Auth.currentCredentials());
 
     Auth.currentCredentials().then(res => {
           eventBus.$emit('refreshCredentials', res)

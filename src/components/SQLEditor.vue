@@ -21,15 +21,10 @@
           <b-col md="8">
             <b-nav tabs>
               <b-nav-item active>Data Preview</b-nav-item>
-              <b-nav-item>Saved Queries</b-nav-item>
             </b-nav>
           </b-col>
           <b-col md="4">
             <div class="query-button-holder">
-              <b-button variant="outline-primary" :disabled="code === ''" @click="showSaveQueryModal = !showSaveQueryModal" style="margin-right: 11px">
-                Share
-                <b-icon icon="share-fill"></b-icon>
-              </b-button>
               <b-button variant="info" :disabled="code === ''" @click="createAthenaQueryExecution">
                 Run
                 <b-icon icon="play-fill"></b-icon>

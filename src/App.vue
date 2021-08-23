@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Header />
       <b-container fluid>
         <QueryPalApp/>
       </b-container>

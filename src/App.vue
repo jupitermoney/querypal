@@ -21,12 +21,11 @@ export default {
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;
-       console.log("=====");
-       console.log(AuthState.SignedIn);
-       console.log("=====");
-       console.log(Auth);
-       console.log("=====");
-       console.log(Auth.currentCredentials());
+       
+        console.log("++++++++++++");
+        console.log(this.$route.query.login);
+        console.log("++++++++++++");
+
        Auth.currentCredentials().then(res => {
           console.log("creds: ", res)
           console.log(res)

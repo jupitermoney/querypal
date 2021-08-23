@@ -11,6 +11,7 @@ import QueryPalApp from '@/components/QueryPalApp'
 import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
+import VueRouter from 'vue-router'
 export default {
   name: 'App',
   components: {
@@ -22,9 +23,22 @@ export default {
        this.authState=AuthState.SignedIn;
        this.user=data;
        
-        console.log("++++++++++++");
-        console.log(this.$route.query.login);
-        console.log("++++++++++++");
+        var router = new VueRouter({
+          mode: 'history',
+          routes: []
+        });
+  
+        var myApp =  new Vue({
+          router,
+          el: '#app',
+          mounted: function() {
+              parameters = this.$route.query
+              console.log(parameters)
+        
+              name = this.$route.query.name
+              console.log(name)
+          },
+        });
 
        Auth.currentCredentials().then(res => {
           console.log("creds: ", res)

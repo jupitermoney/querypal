@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
 import QueryPalApp from '@/components/QueryPalApp'
 import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
@@ -15,7 +14,6 @@ import eventBus from "@/event";
 export default {
   name: 'App',
   components: {
-    Header,
     QueryPalApp,
   },
   created() {

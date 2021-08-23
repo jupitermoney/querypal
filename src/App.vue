@@ -12,6 +12,7 @@ import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
 import VueRouter from 'vue-router'
+import Vue from 'vue'
 export default {
   name: 'App',
   components: {
@@ -32,11 +33,8 @@ export default {
           router,
           el: '#app',
           mounted: function() {
-              parameters = this.$route.query
-              console.log(parameters)
-        
-              name = this.$route.query.name
-              console.log(name)
+              console.log(this.$route.query)
+              console.log(this.$route.query.name)
           },
         });
 

@@ -11,8 +11,6 @@ import QueryPalApp from '@/components/QueryPalApp'
 import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
-import VueRouter from 'vue-router'
-import Vue from 'vue'
 export default {
   name: 'App',
   components: {

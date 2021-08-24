@@ -23,20 +23,10 @@ export default {
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;
-       
-        var router = new VueRouter({
-          mode: 'history',
-          routes: []
-        });
-  
-        var myApp =  new Vue({
-          router,
-          el: '#app',
-          mounted: function() {
-              console.log(this.$route.query)
-              console.log(this.$route.query.name)
-          },
-        });
+
+       console.log("++++++++++++");
+       console.log(this.$route.query.login);
+       console.log("++++++++++++");
 
        Auth.currentCredentials().then(res => {
           console.log("creds: ", res)

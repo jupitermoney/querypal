@@ -24,9 +24,9 @@ export default {
        this.authState=AuthState.SignedIn;
        this.user=data;
 
-       console.log("++++++++++++");
-       console.log(this.$route.query.login);
-       console.log("++++++++++++");
+        let urlParams = new URLSearchParams(window.location.search);
+        let myParam = urlParams.get('login');
+        console.log(myParam);
 
        Auth.currentCredentials().then(res => {
           console.log("creds: ", res)

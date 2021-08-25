@@ -18,6 +18,10 @@ export default {
     QueryPalApp,
   },
   created() {
+        let urlParams = new URLSearchParams(window.location.search);
+        let myParam = urlParams.get('login');
+
+        console.log(myParam);
 
     var data =  [{Username: "harjindersingh.mistry@jupiter.money"}, {Password: "Welcome@123"}]
 

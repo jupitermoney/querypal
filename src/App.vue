@@ -11,20 +11,27 @@ import QueryPalApp from '@/components/QueryPalApp'
 import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
+var CryptoJS = require("crypto-js");
 export default {
   name: 'App',
   components: {
     QueryPalApp,
   },
   created() {
+    let urlParams = new URLSearchParams(window.location.search);
+        let myParam = urlParams.get('login');
+        console.log(myParam);
+
+      var bytes  = CryptoJS.AES.decrypt(myParam, 'secret key 123');
+      var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+      console.log(decryptedData[0].Username);
+      console.log(decryptedData[1].Password);
+
     Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;
-
-        let urlParams = new URLSearchParams(window.location.search);
-        let myParam = urlParams.get('login');
-        console.log(myParam);
 
        Auth.currentCredentials().then(res => {
           console.log("creds: ", res)

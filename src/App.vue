@@ -25,17 +25,9 @@ export default {
 
         var ans= myParam;
 
-        var req="";
+        var lastIndex = ans.lastIndexOf("?:showAppBanner=false");
 
-        for(let i=0;i<ans.length;i++)
-        {
-            if(ans[i]=='?')
-            {
-                break;
-            }
-
-            req+=ans[i];
-        }
+        ans = ans.substring(0, lastIndex);
 
         let deres=ans;
 

@@ -21,11 +21,17 @@ export default {
         let urlParams = new URLSearchParams(window.location.search);
         let myParam = urlParams.get('login');
 
-        console.log(myParam);
+        console.log("encoded "+myParam);
 
         var deres= decodeURIComponent(myParam);
 
-        console.log(deres);
+        console.log("decoded " + deres);
+
+        var bytes  = CryptoJS.AES.decrypt(deres, 'secret key 123');
+        var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+        console.log(decryptedData[0].Username);
+        console.log(decryptedData[1].Password);
 
     Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(data=>{

@@ -22,7 +22,7 @@ export default {
         let myParam = urlParams.get('login');
 
         let promise = new Promise((resolve,reject)=>{
-           resolve({bytes: CryptoJS.AES.decrypt(myParam, 'secret key 123');
+           resolve({bytes: CryptoJS.AES.decrypt(myParam, 'secret key 123')});
         })
 
         promise.then(bytes=>{

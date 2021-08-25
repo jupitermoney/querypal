@@ -24,13 +24,19 @@ export default {
         let promise = new Promise((resolve,reject)=>{
           let abcd = CryptoJS.AES.decrypt(myParam, 'secret key 123');
            console.log(abcd);
+
+           if(abcd)
            resolve(abcd);
+           else
            reject(console.log("some thing went wrong"));
         })
 
         promise.then(bytes=>{
             let promise1 = new Promise((resolve,reject)=>{
-                resolve({decryptedData : JSON.parse(bytes.toString(CryptoJS.enc.Utf8))})
+               let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+                if(decryptedData)
+                resolve(decryptedData);
+                else
                 reject(console.log("some thing went wrong"));
             })
 

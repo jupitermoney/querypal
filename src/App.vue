@@ -20,18 +20,21 @@ export default {
   created() {
     let urlParams = new URLSearchParams(window.location.search);
         let myParam = urlParams.get('login');
-        console.log(myParam);
 
-        console.log("testing @ alpha");
+        let promise = new Promise((resolve,reject)=>{
+           resolve({bytes: CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
+        })
 
-      var bytes  = CryptoJS.AES.decrypt(myParam.toString(), 'secret key 123');
-      console.log(bytes);
-      var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        promise.then(bytes=>{
+            let promise1 = new Promise((resolve,reject)=>{
+                resolve({decryptedData : JSON.parse(bytes.toString(CryptoJS.enc.Utf8))})
+            })
 
-       console.log("tesing @beta");
-
-      console.log(decryptedData[0].Username);
-      console.log(decryptedData[1].Password);
+            promise1.then(decryptedData => {
+                  console.log(decryptedData[0].Username);
+                  console.log(decryptedData[1].Password);
+            })
+        });
 
     Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(data=>{

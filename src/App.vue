@@ -24,7 +24,7 @@ export default {
         let promise = new Promise((resolve,reject)=>{
           let abcd = CryptoJS.AES.decrypt(myParam, 'secret key 123');
            console.log(abcd);
-           resolve({bytes: abcd});
+           resolve(abcd);
            reject(console.log("some thing went wrong"));
         })
 

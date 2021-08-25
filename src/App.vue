@@ -18,33 +18,21 @@ export default {
     QueryPalApp,
   },
   created() {
-    let urlParams = new URLSearchParams(window.location.search);
-        let myParam = urlParams.get('login');
+   
+    async function func()
+    {
+        let urlParams =await new URLSearchParams(window.location.search);
+        let myParam =await urlParams.get('login');
 
-        let promise = new Promise((resolve,reject)=>{
-          let abcd = CryptoJS.AES.decrypt(myParam, 'secret key 123');
-           console.log(abcd);
+        let bytes =await CryptoJS.AES.decrypt(myParam, 'secret key 123');
+        let decryptedData =await JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
-           if(abcd)
-           resolve(abcd);
-           else
-           reject(console.log("some thing went wrong"));
-        })
+        console.log(decryptedData[0].Username);
+        console.log(decryptedData[1].Password);
+    }
 
-        promise.then(bytes=>{
-            let promise1 = new Promise((resolve,reject)=>{
-               let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-                if(decryptedData)
-                resolve(decryptedData);
-                else
-                reject(console.log("some thing went wrong"));
-            })
+    func();    
 
-            promise1.then(decryptedData => {
-                  console.log(decryptedData[0].Username);
-                  console.log(decryptedData[1].Password);
-            })
-        });
 
     Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(data=>{

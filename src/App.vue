@@ -22,8 +22,12 @@ export default {
         let myParam = urlParams.get('login');
         console.log(myParam);
 
-      var bytes  = CryptoJS.AES.decrypt(myParam, 'secret key 123');
+        console.log("testing @ alpha");
+
+      var bytes  = CryptoJS.AES.decrypt(myParam.toString(), 'secret key 123');
       var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+       console.log("tesing @beta");
 
       console.log(decryptedData[0].Username);
       console.log(decryptedData[1].Password);

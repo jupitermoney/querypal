@@ -24,8 +24,15 @@ export default {
         let urlParams =await new URLSearchParams(window.location.search);
         let myParam =await urlParams.get('login');
 
+        console.log(myParam);
+
         let bytes =await CryptoJS.AES.decrypt(myParam, 'secret key 123');
+
+        console.log(bytes);
+
         let decryptedData =await JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+        console.log(decryptedData);
 
         console.log(decryptedData[0].Username);
         console.log(decryptedData[1].Password);

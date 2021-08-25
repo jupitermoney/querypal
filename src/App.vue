@@ -18,28 +18,19 @@ export default {
     QueryPalApp,
   },
   created() {
-   
-    async function func()
-    {
-        let urlParams =await new URLSearchParams(window.location.search);
-        let myParam =await urlParams.get('login');
 
-        console.log(myParam);
+    var data =  [{Username: "harjindersingh.mistry@jupiter.money"}, {Password: "anand@Welcome@123"}]
 
-        let bytes =await CryptoJS.AES.decrypt(myParam, 'secret key 123');
+    var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'secret key 123').toString();
 
-        console.log(bytes);
+    console.log(ciphertext);
+    console.log(typeof(ciphertext));
 
-        let decryptedData =await JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    var bytes  = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
+    var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
-        console.log(decryptedData);
-
-        console.log(decryptedData[0].Username);
-        console.log(decryptedData[1].Password);
-    }
-
-    func();    
-
+    console.log(decryptedData[0].Username);
+    console.log(decryptedData[1].Password);
 
     Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(data=>{

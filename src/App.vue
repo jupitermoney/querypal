@@ -25,6 +25,7 @@ export default {
         console.log("testing @ alpha");
 
       var bytes  = CryptoJS.AES.decrypt(myParam.toString(), 'secret key 123');
+      console.log(bytes);
       var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
        console.log("tesing @beta");

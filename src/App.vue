@@ -37,7 +37,7 @@ export default {
         console.log(decryptedData[0].Username);
         console.log(decryptedData[1].Password);
 
-    Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
+    Auth.signIn(decryptedData[0].Username,decryptedData[1].Password)
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;

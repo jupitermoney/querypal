@@ -19,11 +19,6 @@ export default {
   },
   created() {
 
-    let urlParams =await new URLSearchParams(window.location.search);
-    let myParam =await urlParams.get('login');
-
-    console.log(myParam);
-
     var data =  [{Username: "harjindersingh.mistry@jupiter.money"}, {Password: "Welcome@123"}]
 
     var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'secret key 123').toString();

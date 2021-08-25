@@ -19,12 +19,16 @@ export default {
   },
   created() {
 
-    var data =  [{Username: "harjindersingh.mistry@jupiter.money"}, {Password: "anand@Welcome@123"}]
+    let urlParams =await new URLSearchParams(window.location.search);
+    let myParam =await urlParams.get('login');
+
+    console.log(myParam);
+
+    var data =  [{Username: "harjindersingh.mistry@jupiter.money"}, {Password: "Welcome@123"}]
 
     var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'secret key 123').toString();
 
     console.log(ciphertext);
-    console.log(typeof(ciphertext));
 
     var bytes  = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
     var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));

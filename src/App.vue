@@ -23,17 +23,9 @@ export default {
 
         console.log(myParam);
 
-    var data =  [{Username: "harjindersingh.mistry@jupiter.money"}, {Password: "Welcome@123"}]
+        var deres= decodeURIComponent(myParam);
 
-    var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'secret key 123').toString();
-
-    console.log(ciphertext);
-
-    var bytes  = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
-    var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
-    console.log(decryptedData[0].Username);
-    console.log(decryptedData[1].Password);
+        console.log(deres);
 
     Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(data=>{

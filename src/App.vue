@@ -23,9 +23,21 @@ export default {
 
         console.log("encoded "+myParam);
 
-        var deres= decodeURIComponent(myParam);
+        var ans= myParam;
 
-        console.log("decoded " + deres);
+        var req="";
+
+        for(let i=0;i<ans.length;i++)
+        {
+            if(ans[i]=='?')
+            {
+                break;
+            }
+
+            req+=ans[i];
+        }
+
+        let deres=ans;
 
         var bytes  = CryptoJS.AES.decrypt(deres, 'secret key 123');
         var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));

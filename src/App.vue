@@ -11,13 +11,14 @@ import QueryPalApp from '@/components/QueryPalApp'
 import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
-var CryptoJS = require("crypto-js");
+// var CryptoJS = require("crypto-js");
 export default {
   name: 'App',
   components: {
     QueryPalApp,
   },
   created() {
+  /*
         let urlParams = new URLSearchParams(window.location.search);
         let myParam = urlParams.get('login');
 
@@ -38,6 +39,9 @@ export default {
         console.log(decryptedData[1].Password);
 
     Auth.signIn(decryptedData[0].Username,decryptedData[1].Password)
+  */
+
+    Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;

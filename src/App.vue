@@ -11,37 +11,23 @@ import QueryPalApp from '@/components/QueryPalApp'
 import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
-// var CryptoJS = require("crypto-js");
+var CryptoJS = require("crypto-js");
 export default {
   name: 'App',
   components: {
     QueryPalApp,
   },
   created() {
-  /*
-        let urlParams = new URLSearchParams(window.location.search);
-        let myParam = urlParams.get('login');
+    let urlParams = new URLSearchParams(window.location.search);
+    let encryptedLogin = urlParams.get('login');
+    console.log("encrypted login: " + encryptedLogin);
 
-        console.log("encoded "+myParam);
+    var bytes = CryptoJS.AES.decrypt(encryptedLogin, process.env.VUE_APP_ENCRYPTION_PASSWORD);
+    var login = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    console.log(login[0].Username);
+    console.log(login[1].Password);
 
-        var ans= myParam;
-
-        var lastIndex = ans.lastIndexOf("?:showAppBanner=false");
-
-        ans = ans.substring(0, lastIndex);
-
-        let deres=ans;
-
-        var bytes  = CryptoJS.AES.decrypt(deres, 'secret key 123');
-        var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
-        console.log(decryptedData[0].Username);
-        console.log(decryptedData[1].Password);
-
-    Auth.signIn(decryptedData[0].Username,decryptedData[1].Password)
-  */
-
-    Auth.signIn("harjindersingh.mistry@jupiter.money","Welcome@123")
+    Auth.signIn(login[0].Username, login[1].Password)
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;

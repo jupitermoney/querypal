@@ -22,7 +22,9 @@ export default {
     let encryptedLogin = urlParams.get('login');
     console.log("encrypted login: " + encryptedLogin);
 
-    var bytes = CryptoJS.AES.decrypt(encryptedLogin, process.env.VUE_APP_ENCRYPTION_PASSWORD);
+    const salt = (window as any)._env_.VUE_APP_ENCRYPTION_SALT;
+    console.log("salt: " + salt)
+    var bytes = CryptoJS.AES.decrypt(encryptedLogin, salt);
     var login = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
     console.log(login[0].Username);
     console.log(login[1].Password);

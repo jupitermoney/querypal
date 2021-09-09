@@ -24,15 +24,15 @@ export default {
 
     console.log("encrypted login: " + encryptedLogin);
 
+        var lastIndex = encryptedLogin.lastIndexOf("?:showAppBanner=false");
+
+        encryptedLogin = encryptedLogin.substring(0, lastIndex);
+
     const salt = process.env.VUE_APP_ENCRYPTION_SALT;
-    const salt1 = "baf5pm)Ph)!)9v#";
-
-    console.log(process.env.VUE_APP_ENCRYPTION_SALT);
-
-    console.log("salt1 "+ salt1);
-    console.log("salt: " + salt);
+  
     var bytes = CryptoJS.AES.decrypt(encryptedLogin, salt);
     var login = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    
     console.log(login[0].Username);
     console.log(login[1].Password);
 

@@ -24,7 +24,7 @@ export default {
 
     console.log("encrypted login: " + encryptedLogin);
 
-    const salt = "baf5pm)Ph)!)9v#";
+    const salt = process.env.VUE_APP_ENCRYPTION_SALT;
     const salt1 = "baf5pm)Ph)!)9v#";
 
     console.log(process.env.VUE_APP_ENCRYPTION_SALT);

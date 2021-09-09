@@ -1,13 +1,14 @@
 <template>
   <div id="app">
       <b-container fluid>
-        <QueryPalApp/>
+      {{isLoggedIn:<QueryPalApp/>?<NotValidUser/>}}
       </b-container>
   </div>
 </template>
 
 <script>
 import QueryPalApp from '@/components/QueryPalApp'
+import NotValidUser from '@/components/NotValidUser'
 import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
@@ -24,9 +25,9 @@ export default {
 
     console.log("encrypted login: " + encryptedLogin);
 
-        var lastIndex = encryptedLogin.lastIndexOf("?:showAppBanner=false");
+    var lastIndex = encryptedLogin.lastIndexOf("?:showAppBanner=false");
 
-        encryptedLogin = encryptedLogin.substring(0, lastIndex);
+    encryptedLogin = encryptedLogin.substring(0, lastIndex);
 
     const salt = process.env.VUE_APP_ENCRYPTION_SALT;
   
@@ -40,6 +41,7 @@ export default {
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;
+       this.isLoggedIn=true;
 
        Auth.currentCredentials().then(res => {
           console.log("creds: ", res)
@@ -64,7 +66,8 @@ export default {
   data(){
     return {
       user: undefined,
-      authState: undefined
+      authState: undefined,
+      isLoggedIn: false
     }
   },
   beforeDestroy() {

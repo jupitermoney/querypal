@@ -1,14 +1,13 @@
 <template>
   <div id="app">
       <b-container fluid>
-      {{isLoggedIn:<QueryPalApp/>?<NotValidUser/>}}
+        <QueryPalApp/>
       </b-container>
   </div>
 </template>
 
 <script>
 import QueryPalApp from '@/components/QueryPalApp'
-import NotValidUser from '@/components/NotValidUser'
 import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
@@ -41,7 +40,6 @@ export default {
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;
-       this.isLoggedIn=true;
 
        Auth.currentCredentials().then(res => {
           console.log("creds: ", res)
@@ -67,7 +65,6 @@ export default {
     return {
       user: undefined,
       authState: undefined,
-      isLoggedIn: false
     }
   },
   beforeDestroy() {

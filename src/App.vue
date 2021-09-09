@@ -18,21 +18,23 @@ export default {
     QueryPalApp,
   },
   created() {
-        let urlParams = new URLSearchParams(window.location.search);
-        let myParam = urlParams.get('login');
+    let urlParams = new URLSearchParams(window.location.search);
+    let encryptedLogin = urlParams.get('login');
 
-        var ans= myParam;
+    console.log("encrypted login: " + encryptedLogin);
 
-        var lastIndex = ans.lastIndexOf("?:showAppBanner=false");
 
-        ans = ans.substring(0, lastIndex);
+    const salt = (window as any)._env_.VUE_APP_ENCRYPTION_SALT;
+    cosnt salt1 = process.env.VUE_APP_ENCRYPTION_SALT;
 
-        let deres=ans;
+    console.log("salt1 "+ salt1);
+    console.log("salt: " + salt);
+    var bytes = CryptoJS.AES.decrypt(encryptedLogin, salt);
+    var login = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    console.log(login[0].Username);
+    console.log(login[1].Password);
 
-        var bytes  = CryptoJS.AES.decrypt(deres, 'secret key 123');
-        var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
-    Auth.signIn(decryptedData[0].Username,decryptedData[1].Password)
+    Auth.signIn(login[0].Username, login[1].Password)
       .then(data=>{
        this.authState=AuthState.SignedIn;
        this.user=data;

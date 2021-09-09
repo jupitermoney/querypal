@@ -12,8 +12,8 @@ import { onAuthUIStateChange, AuthState } from '@aws-amplify/ui-components'
 import {Auth} from '@aws-amplify/auth';
 import eventBus from "@/event";
 var CryptoJS = require("crypto-js");
-export salt = (window as any)._env_.VUE_APP_ENCRYPTION_SALT;
-export salt1 = process.env.VUE_APP_ENCRYPTION_SALT;
+import salt = (window as any)._env_.VUE_APP_ENCRYPTION_SALT;
+import salt1 = process.env.VUE_APP_ENCRYPTION_SALT;
 export default {
   name: 'App',
   components: {
@@ -25,8 +25,6 @@ export default {
 
     console.log("encrypted login: " + encryptedLogin);
 
-
-    
 
     console.log("salt1 "+ salt1);
     console.log("salt: " + salt);

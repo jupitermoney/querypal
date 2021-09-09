@@ -6,8 +6,5 @@ Please contact to Data Science Team
 </template>
 
 <script>
-export default {
-  name: 'NotValidUser'
-}
 </script>
 

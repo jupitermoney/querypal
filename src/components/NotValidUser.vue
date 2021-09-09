@@ -7,10 +7,6 @@ Please contact to Data Science Team
 
 <script>
 export default {
-  name: 'NotValidUser',
-  props: {
-    msg: String
-  },
 }
 </script>
 

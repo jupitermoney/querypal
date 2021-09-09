@@ -21,8 +21,6 @@ export default {
         let urlParams = new URLSearchParams(window.location.search);
         let myParam = urlParams.get('login');
 
-        console.log("encoded "+myParam);
-
         var ans= myParam;
 
         var lastIndex = ans.lastIndexOf("?:showAppBanner=false");
@@ -33,9 +31,6 @@ export default {
 
         var bytes  = CryptoJS.AES.decrypt(deres, 'secret key 123');
         var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
-        console.log(decryptedData[0].Username);
-        console.log(decryptedData[1].Password);
 
     Auth.signIn(decryptedData[0].Username,decryptedData[1].Password)
       .then(data=>{

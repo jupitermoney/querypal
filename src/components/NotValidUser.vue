@@ -1,5 +1,4 @@
 <template>
-<p>Please contact team for help</p>
 <div>
 Please contact to Data Science Team 
 </div>

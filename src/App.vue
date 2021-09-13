@@ -18,6 +18,7 @@ export default {
   name: 'App',
   components: {
     QueryPalApp,
+    NotValidUser,
   },
   created() {
     let urlParams = new URLSearchParams(window.location.search);

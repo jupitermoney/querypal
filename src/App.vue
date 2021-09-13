@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       <b-container fluid>
-      {{IsLoggedIn ? <QueryPalApp/> : <NotValidUser/>}}
+      {{this.IsLoggedIn ? <QueryPalApp/> : <NotValidUser/>}}
       </b-container>
   </div>
 </template>

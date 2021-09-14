@@ -25,6 +25,8 @@ export default {
     let urlParams = new URLSearchParams(window.location.search);
     let encryptedLogin = urlParams.get('login');
 
+    console.log(encryptedLogin);
+
     console.log("encrypted login: " + encryptedLogin);
 
     var lastIndex = encryptedLogin.lastIndexOf("?:showAppBanner=false");
@@ -32,6 +34,8 @@ export default {
     encryptedLogin = encryptedLogin.substring(0, lastIndex);
 
     const salt = process.env.VUE_APP_ENCRYPTION_SALT;
+
+    console.log(encryptedLogin);
   
     var bytes = CryptoJS.AES.decrypt(encryptedLogin, salt);
     var login = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));

@@ -1,7 +1,8 @@
 <template>
   <div id="app">
       <b-container fluid>
-      {{this.IsLoggedIn ? <QueryPalApp/> : <NotValidUser/>}}
+      <QueryPalApp v-if="IsLoggedIn===true"/>
+      <NotValidUser v-if="IsLoggedIn===false"/>
       </b-container>
   </div>
 </template>

@@ -200,11 +200,11 @@ Resources:
       
       UsernameAttributes: !Ref usernameAttributes
       
-      MfaConfiguration: !Ref mfaConfiguration
-      SmsVerificationMessage: !Ref smsVerificationMessage
-      SmsConfiguration:
-        SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: querypd06914aa_role_external_id
+#      MfaConfiguration: !Ref mfaConfiguration
+#      SmsVerificationMessage: !Ref smsVerificationMessage
+#      SmsConfiguration:
+#        SnsCallerArn: !GetAtt SNSRole.Arn
+#        ExternalId: querypd06914aa_role_external_id
     
   
   UserPoolClientWeb:

@@ -32,6 +32,7 @@ export default {
     encryptedLogin = encryptedLogin.substring(0, lastIndex);
 
     const salt = process.env.VUE_APP_ENCRYPTION_SALT;
+    console.log("salt: " + salt);
   
     var bytes = CryptoJS.AES.decrypt(encryptedLogin, salt);
     var login = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));

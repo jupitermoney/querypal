@@ -1,6 +1,9 @@
 <template>
-<div>
-<h1>Please contact to Data Science Team </h1>
+<div class="container">
+  <div class="center">
+    <h1>SQL Editor</h1>
+    <p>Powered by QueryPal</p>
+  </div>
 </div>
 </template>
 
@@ -11,12 +14,17 @@ export default {
 </script>
 
 <style>
-.div {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border: 1px solid #fff;
-  text-align: center;
-  top-margin: 200px;
+.container {
+  height: 1000px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 </style>

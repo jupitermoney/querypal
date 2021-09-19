@@ -24,15 +24,9 @@ export default {
   created() {
     let urlParams = new URLSearchParams(window.location.search);
     let encryptedLogin = urlParams.get('login');
-    console.log("encrypted login: " + encryptedLogin);
-
     const salt = process.env.VUE_APP_ENCRYPTION_SALT;
-    console.log("salt: " + salt);
-  
-    var bytes = CryptoJS.AES.decrypt(encryptedLogin, salt);
-    var login = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-    console.log(login.Username);
-    console.log(login.Password);
+    var decryptedLogin = CryptoJS.AES.decrypt(encryptedLogin, salt);
+    var login = JSON.parse(decryptedLogin.toString(CryptoJS.enc.Utf8));
 
     Auth.signIn(login.Username, login.Password)
       .then(data=>{

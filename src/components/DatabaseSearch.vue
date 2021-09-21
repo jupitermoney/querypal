@@ -28,14 +28,18 @@
 <script>
 // import AWS from 'aws-sdk';
 import {AthenaClient, ListDatabasesCommand, ListTableMetadataCommand} from '@aws-sdk/client-athena';
+import {Auth} from "@aws-amplify/auth";
 import { Analytics } from '@aws-amplify/analytics';
 import eventBus from "@/event";
 import awsconfig from "@/aws-exports";
 
 export default {
   name: "DatabaseSearch",
-  created() {
+  async created() {
     this.eventBusListener();
+    const credentials = await Auth.currentCredentials()
+    this.client = new AthenaClient({credentials, region: awsconfig.aws_project_region})
+    await this.listAthenaDatabases();
   },
   mounted: async function () {},
   data() {
